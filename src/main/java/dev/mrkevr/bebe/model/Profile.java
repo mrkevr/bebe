@@ -2,15 +2,11 @@ package dev.mrkevr.bebe.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.Id;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Profile {
-    String id;
+public class Profile extends Document {
     String username;
     String firstName;
     String lastName;
@@ -18,4 +14,15 @@ public class Profile {
     String bio;
     String imageUrl;
     String personalityType;
+
+    public Profile(String username, String firstName, String lastName, Gender gender, String bio, String imageUrl, String personalityType) {
+        super();
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.bio = bio;
+        this.imageUrl = imageUrl;
+        this.personalityType = personalityType;
+    }
 }
