@@ -2,7 +2,7 @@ package dev.mrkevr.bebe.dto;
 
 import dev.mrkevr.bebe.model.Gender;
 
-public record ProfileRegistrationRequest(
+public record ProfileCreationRequest(
         String username,
         String firstName,
         String lastName,

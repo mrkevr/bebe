@@ -1,6 +1,6 @@
 package dev.mrkevr.bebe.service;
 
-import dev.mrkevr.bebe.dto.ProfileRegistrationRequest;
+import dev.mrkevr.bebe.dto.ProfileCreationRequest;
 import dev.mrkevr.bebe.mapper.ProfileMapper;
 import dev.mrkevr.bebe.model.Profile;
 import dev.mrkevr.bebe.repository.ProfileRepository;
@@ -26,7 +26,11 @@ public class ProfileService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Profile not found with that username"));
     }
 
-    public Profile register(ProfileRegistrationRequest request) {
+    public boolean existById(String id) {
+        return profileRepository.existsById(id);
+    }
+
+    public Profile register(ProfileCreationRequest request) {
         Profile profile = profileMapper.toProfile(request);
         return profileRepository.save(profile);
     }
